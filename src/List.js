@@ -12,3 +12,7 @@ export const List = (props) => {
     </ul>
   );
 };
+
+// Mapped through the stories array which was passed as a props named "list" to this component
+// Used the objectID's in each object as a key
+// Used the item parameter I created for this mapping function as a props for the Item.Js

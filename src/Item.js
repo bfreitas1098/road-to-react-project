@@ -14,3 +14,5 @@ export const Item = (props) => {
     </li>
   );
 };
+
+// Displayed each item of the stories objects from App.Js using the "item" props from List.Js

@@ -22,11 +22,16 @@ const stories = [
   },
 ];
 
+const eventHandler = (event) => {
+  event.preventDefault();
+};
+
 export const App = () => {
   return (
     <div>
       <h1>My App</h1>
-      <Search />
+      <Search onSearch={eventHandler} />
+      {/* passing the callback function to Search.Js as a props */}
       <hr />
       <List list={stories} />
     </div>
