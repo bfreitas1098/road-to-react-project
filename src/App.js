@@ -28,14 +28,21 @@ export const App = () => {
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
+  // created a callback function to pass as a props to Search.js so it can update state in its own component
+
+  const searchedStories = stories.filter((story) =>
+    story.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  // filtered through the stories array so it only displays the list when the titles are searched
+  // used the toLowerCase function to allow it to understand other spellings of the titles
 
   return (
     <div>
       <h1>My App</h1>
       <Search onSearch={handleSearch} word={searchTerm} />
-      {/* passing the callback function to Search.Js as a props */}
+      {/* passing the callback function to Search.js as a props */}
       <hr />
-      <List list={stories} />
+      <List list={searchedStories} />
     </div>
   );
 };

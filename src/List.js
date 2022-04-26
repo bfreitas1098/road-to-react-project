@@ -13,6 +13,6 @@ export const List = (props) => {
   );
 };
 
-// Mapped through the stories array which was passed as a props named "list" to this component
+// Mapped through the stories array which was passed as a props named "list" to this component and filtered by title in the App.js
 // Used the objectID's in each object as a key
-// Used the item parameter I created for this mapping function as a props for the Item.Js
+// Used the item parameter I created for this mapping function as a props for the Item.js
