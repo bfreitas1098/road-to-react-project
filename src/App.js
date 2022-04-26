@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { List } from "./List";
 import { Search } from "./Search";
@@ -22,15 +22,17 @@ const stories = [
   },
 ];
 
-const eventHandler = (event) => {
-  event.preventDefault();
-};
-
 export const App = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <div>
       <h1>My App</h1>
-      <Search onSearch={eventHandler} />
+      <Search onSearch={handleSearch} word={searchTerm} />
       {/* passing the callback function to Search.Js as a props */}
       <hr />
       <List list={stories} />
