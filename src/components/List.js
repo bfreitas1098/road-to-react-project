@@ -1,9 +1,7 @@
 import React from "react";
 import { Item } from "./Item";
 
-export const List = (props) => {
-  const { list } = props;
-
+export const List = ({ list }) => {
   return (
     <ul>
       {list.map((item) => (

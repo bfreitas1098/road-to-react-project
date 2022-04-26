@@ -1,8 +1,6 @@
 import React from "react";
 
-export const Item = (props) => {
-  const { item } = props;
-
+export const Item = ({ item }) => {
   return (
     <li>
       <span>
