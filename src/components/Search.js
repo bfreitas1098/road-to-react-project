@@ -25,3 +25,4 @@ export const Search = ({ onSearch, word }) => {
     </div>
   );
 };
+// written as a block body because there are multiple lines of processing code before the return statement

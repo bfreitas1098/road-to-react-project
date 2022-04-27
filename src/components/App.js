@@ -23,6 +23,7 @@ const stories = [
   },
 ];
 
+// written as a block body because there are multiple lines of processing code before the return statement
 export const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
