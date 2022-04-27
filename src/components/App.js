@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { List } from "./List";
 import { Search } from "./Search";
 
@@ -25,7 +25,13 @@ const stories = [
 
 // written as a block body because there are multiple lines of processing code before the return statement
 export const App = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem("search") || `React`
+  );
+
+  useEffect(() => {
+    localStorage.setItem(`search`, searchTerm);
+  }, [searchTerm]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
