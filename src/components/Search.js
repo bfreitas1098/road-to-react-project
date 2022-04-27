@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// the parameters in my Search component parentheses are the names of my props that were given to this component from the App.js
 export const Search = ({ onSearch, word }) => {
   const [loaded, setLoaded] = useState(false);
 

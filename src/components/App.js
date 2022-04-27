@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { List } from "./List";
 import { Search } from "./Search";
 
-import "./App.css";
+import "../styles/App.css";
 
 const stories = [
   {
