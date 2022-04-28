@@ -61,11 +61,13 @@ export const App = () => {
     <>
       <h1>My App</h1>
       <Input
+        isFocused
         id="search"
         value="Search"
         word={searchTerm}
         onInputChange={handleSearch}
       />
+      {/* the isFocused attribute is being used to have this instance of the Input component have autofocus */}
       {/* passing the callback function to Search.js as a props */}
       <hr />
       <List list={searchedStories} />
