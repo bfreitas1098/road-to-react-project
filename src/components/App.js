@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { List } from "./List";
-import { Search } from "./Search";
+import { Input } from "./Input";
 
 import "../styles/App.css";
 
@@ -58,12 +58,17 @@ export const App = () => {
   // used the toLowerCase function to allow it to understand other spellings of the titles
 
   return (
-    <div>
+    <>
       <h1>My App</h1>
-      <Search onSearch={handleSearch} word={searchTerm} />
+      <Input
+        id="search"
+        value="Search"
+        word={searchTerm}
+        onInputChange={handleSearch}
+      />
       {/* passing the callback function to Search.js as a props */}
       <hr />
       <List list={searchedStories} />
-    </div>
+    </>
   );
 };
