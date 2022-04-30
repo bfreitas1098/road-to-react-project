@@ -4,20 +4,39 @@ import { Input } from "./Input";
 
 import "../styles/App.css";
 
+const initialStories = [
+  {
+    title: "React",
+    url: "https://react.js/org/",
+    author: "Jordan Walke",
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+  },
+  {
+    title: "Redux",
+    url: "https://redux.js.org/",
+    author: "Dan Abramov, Andrew Clark",
+    num_comments: 2,
+    points: 5,
+    objectID: 1,
+  },
+];
+
 // created a custom hook to synchronize the state with the browser's local storage
 const useSemiPersistentState = (key, initialState) => {
   const [value, setValue] = useState(localStorage.getItem(key) ?? initialState);
   // used a nullish coalescing operator to set the default search to the initialState if the search is null or undefined
-  // value and setValue are used in this case to be more generic and reusable, when the semiPersistentState is called in the App component,
-  // the key becomes `search` which is the searchTerm and the initialState is `React`
-  // the key is necessary so that if this hook is reused each value will be unique and function properly, or else it could be overwritten
-  // in the useState hook here we are getting the key or initialState from the local storage
+  /* value and setValue are used in this case to be more generic and reusable, when the semiPersistentState is called in the App component,
+  the key becomes `search` which is the searchTerm and the initialState is `React` */
+  /* the key is necessary so that if this hook is reused each value will be unique and function properly, or else it could be overwritten
+  in the useState hook here we are getting the key or initialState from the local storage */
 
   useEffect(() => {
     localStorage.setItem(key, value);
   }, [value, key]);
-  // the side-effect in the useEffect hook is setting the key & value in local storage, and they are also included in the dependency array so that
-  // the hook will know to run when the component is first mounted and when it is updated
+  /* the side-effect in the useEffect hook is setting the key & value in local storage, and they are also included in the dependency array so that
+  the hook will know to run when the component is first mounted and when it is updated */
 
   return [value, setValue];
   // this return array is necessary to be able to use these state values in the component that the custom hook is being called in; (App in this case)
@@ -25,26 +44,15 @@ const useSemiPersistentState = (key, initialState) => {
 
 // written as a block body because there are multiple lines of processing code before the return statement
 export const App = () => {
-  const stories = [
-    {
-      title: "React",
-      url: "https://react.js/org/",
-      author: "Jordan Walke",
-      num_comments: 3,
-      points: 4,
-      objectID: 0,
-    },
-    {
-      title: "Redux",
-      url: "https://redux.js.org/",
-      author: "Dan Abramov, Andrew Clark",
-      num_comments: 2,
-      points: 5,
-      objectID: 1,
-    },
-  ];
-
   const [searchTerm, setSearchTerm] = useSemiPersistentState(`search`, `React`);
+  const [stories, setStories] = useState(initialStories);
+
+  const handleRemoveStory = (item) => {
+    const newStories = stories.filter(
+      (story) => item.objectID !== story.objectID
+    );
+    setStories(newStories);
+  };
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -70,7 +78,7 @@ export const App = () => {
       {/* the isFocused attribute is being used to have this instance of the Input component have autofocus */}
       {/* passing the callback function to Search.js as a props */}
       <hr />
-      <List list={searchedStories} />
+      <List list={searchedStories} onRemoveItem={handleRemoveStory} />
     </>
   );
 };

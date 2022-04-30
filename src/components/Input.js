@@ -18,9 +18,9 @@ export const Input = ({
       inputRef.current.focus();
     }
   }, [isFocused]);
-  // in this useEffect hook, the side-effect is to put focus on the input field only when isFocused is true, which it is in this case because
-  // it has been passed as a props to this component, and it is true in the current element that the useRef is in which the current property makes clear
-  // the useEffect hook runs when the component is mounted and when it is updated by isFocused
+  /* in this useEffect hook, the side-effect is to put focus on the input field only when isFocused is true, which it is in this case because
+  it has been passed as a props to this component, and it is true in the current element that the useRef is in which the current property makes clear
+  the useEffect hook runs when the component is mounted and when it is updated by isFocused */
 
   let handleSubmit = (event) => {
     event.preventDefault();

@@ -1,11 +1,11 @@
 import React from "react";
 import { Item } from "./Item";
 
-export const List = ({ list }) => (
+export const List = ({ list, onRemoveItem }) => (
   <ul>
     {/* used a spread and rest operator to separate the objectID to use as a key and send the item object and all its properties as props to List.js*/}
     {list.map(({ objectID, ...item }) => (
-      <Item key={objectID} {...item} />
+      <Item key={objectID} {...item} onRemoveItem={onRemoveItem} />
     ))}
   </ul>
 );

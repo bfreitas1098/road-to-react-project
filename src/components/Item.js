@@ -1,7 +1,15 @@
 import React from "react";
 
 // used nested destructuring here after sending the item object in a spread operator to this component
-export const Item = ({ title, url, author, num_comments, points }) => (
+export const Item = ({
+  title,
+  url,
+  author,
+  num_comments,
+  points,
+  objectID,
+  onRemoveItem,
+}) => (
   <li>
     <span>
       <a href={url}>{title} </a>
@@ -9,6 +17,11 @@ export const Item = ({ title, url, author, num_comments, points }) => (
     <span>{author} </span>
     <span>{num_comments} </span>
     <span>{points}</span>
+    <span>
+      <button type="button" onClick={() => onRemoveItem(objectID)}>
+        Remove
+      </button>
+    </span>
   </li>
 );
 
